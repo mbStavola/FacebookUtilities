@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -32,26 +35,37 @@ public class FacebookScraper {
 	public Object clone() throws CloneNotSupportedException {throw new CloneNotSupportedException();}
 	// END SINGLETON
 
-	
+	private String token;
 	private Path brandsFilePath; // The path to the txt file containing the brands
 	private List<String> brands; // A list where each element is one brand to scrape
-	
+
 	private final String delimiter = "`~!"; // The delimiter between fields in our output
 	private FacebookClient facebookClient; // The actual FB client that will be used to scrape data
-	
+
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
 			System.err.println("Number of parameters is incorrect! Please pass your user-token and your txt file path only");
 			System.exit(1);
 		}
-		getFacebookScraper().facebookClient = new DefaultFacebookClient(args[0]); // Creates the FB client using your access token
+		getFacebookScraper().token = getToken(args[0]);
+		getFacebookScraper().facebookClient = new DefaultFacebookClient(getFacebookScraper().token); // Creates the FB client using your access token
 		getFacebookScraper().brandsFilePath = Paths.get(args[1]); // Sets the brands filepath
 		
 		getFacebookScraper().brands = Files.readAllLines(getFacebookScraper().brandsFilePath, Charset.defaultCharset()); // Gets each line from the file and puts it into the list
 		
 		getFacebookScraper().scrapeBrands(getFacebookScraper().brands); // Scrape the data for every brand
 	}
-	
+	public static String getToken(String tokenString) throws IOException {
+		Path tokenPath = Paths.get(tokenString);
+		if (Files.exists(tokenPath)) { // If the token was passed as a file
+			File tokenFile = new File(tokenString);
+			BufferedReader reader = new BufferedReader(new FileReader(tokenFile));
+			return reader.readLine();
+		}
+		else {
+			return tokenString;
+		}
+	}
 	public void scrapeBrands(List<String> names) throws FacebookGraphException {
 		String company;
 		Page page;
