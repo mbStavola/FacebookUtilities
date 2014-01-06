@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<data>
+	<fields>
+		<field>
+			<human-readable-name>ID</human-readable-name>
+			<facebook-graph-name></facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>FBID</human-readable-name>
+			<facebook-graph-name>id</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>NAME</human-readable-name>
+			<facebook-graph-name>name</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>USERNAME</human-readable-name>
+			<facebook-graph-name>username</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>LINK</human-readable-name>
+			<facebook-graph-name>link</facebook-graph-name>
+		</field>
+		<!-- <field>
+			<human-readable-name>CATEGORY</human-readable-name>
+			<facebook-graph-name>category</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>LIKES</human-readable-name>
+			<facebook-graph-name>likes</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>CHECKINS</human-readable-name>
+			<facebook-graph-name>checkins</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>TALKING_ABOUT_COUNT</human-readable-name>
+			<facebook-graph-name>talking_about_count</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>FOUNDED</human-readable-name>
+			<facebook-graph-name>founded</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>PRODUCTS</human-readable-name>
+			<facebook-graph-name>products</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>COMPANY_OVERVIEW</human-readable-name>
+			<facebook-graph-name>company_overview</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>MISSION</human-readable-name>
+			<facebook-graph-name>mission</facebook-graph-name>
+		</field>
+		<field>
+			<human-readable-name>DESCRIPTION</human-readable-name>
+			<facebook-graph-name>description</facebook-graph-name>
+		</field> -->
+	</fields>
+	<token>CAAAANcD5iKcBAMKAPnsZBIrOsX9eM7xCTP1GQ4b0yOKZAHuyaKwZBMZCX9cc6YGBxKtRbLeJHBoJtCwY368xpj8eN9lcxlYIzZAZAe3uhsV5RGmgiPGpepT7puciZAe7nLRbB60mmr9bgXSTfCDoHhD1qLvrKhZADebIseec9Irc93j9WfNqH23G5tl8yAJnsgAZD</token>
+	<delimiter>|</delimiter>
+</data>
