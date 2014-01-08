@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+
 <data>
+	<delimiter>|</delimiter>
+	<facebook-login>
+		<username>kevinmspam@gmail.com</username>
+		<password>wunderman1</password>
+	</facebook-login>
+
 	<fields>
 		<field>
 			<human-readable-name>ID</human-readable-name>
@@ -21,7 +28,7 @@
 			<human-readable-name>LINK</human-readable-name>
 			<facebook-graph-name>link</facebook-graph-name>
 		</field>
-		<!-- <field>
+		<field>
 			<human-readable-name>CATEGORY</human-readable-name>
 			<facebook-graph-name>category</facebook-graph-name>
 		</field>
@@ -56,8 +63,23 @@
 		<field>
 			<human-readable-name>DESCRIPTION</human-readable-name>
 			<facebook-graph-name>description</facebook-graph-name>
-		</field> -->
+		</field>
 	</fields>
-	<token>CAAAANcD5iKcBAMKAPnsZBIrOsX9eM7xCTP1GQ4b0yOKZAHuyaKwZBMZCX9cc6YGBxKtRbLeJHBoJtCwY368xpj8eN9lcxlYIzZAZAe3uhsV5RGmgiPGpepT7puciZAe7nLRbB60mmr9bgXSTfCDoHhD1qLvrKhZADebIseec9Irc93j9WfNqH23G5tl8yAJnsgAZD</token>
-	<delimiter>|</delimiter>
+
+	<token-refresher>
+		<urls>
+			<initial-url>https://www.facebook.com/dialog/oauth?client_id=230870845607&amp;redirect_uri=http%3A%2F%2Fwww.wunderman.com%2F</initial-url>
+			<oauth-url>https://graph.facebook.com/oauth/access_token?client_id=230870845607&amp;redirect_uri=http%3A%2F%2Fwww.wunderman.com%2F&amp;client_secret=86fce275d90527200b3e7836392af793&amp;code=</oauth-url>
+		</urls>
+		<html-element-ids>
+			<login-form>login_form</login-form>
+			<login-form-email>email</login-form-email>
+			<login-form-password>pass</login-form-password>
+			<login-form-submit>u_0_1</login-form-submit>
+		</html-element-ids>
+		<parameters>
+			<code>code</code>
+			<access-token>access_token</access-token>
+		</parameters>
+	</token-refresher>
 </data>

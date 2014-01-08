@@ -1,4 +1,4 @@
-package facebook_get;
+package facebook_scraper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -33,6 +33,11 @@ public class FacebookBatchUtils {
 		}
 	}
 	
+	// Takes a String to a file where each newline is a brand's name, and makes a map. The map's key is the brand's name from the BufferedReader, and the value is a corresponding BatchFB object.
+	public static Map<String, Later<JsonNode>> getMapOfBrands(Batcher batcher, String brandNames) throws IOException {
+		File file = new File(brandNames);
+		return getMapOfBrands(batcher, file);
+	}
 	// Takes a file where each newline is a brand's name, and makes a map. The map's key is the brand's name from the BufferedReader, and the value is a corresponding BatchFB object.
 	public static Map<String, Later<JsonNode>> getMapOfBrands(Batcher batcher, File brandNames) throws IOException {
 		Map<String, Later<JsonNode>> map = new HashMap<String, Later<JsonNode>>();
@@ -99,14 +104,19 @@ public class FacebookBatchUtils {
 		for (String element : elements) {
 				if (element != null) { // If the element is null, we will skip the entire process of concatenating to the StringBuilder
 					try {
-						sb.append(brand.path(element).asText()); // Append the element that we got from the current page
+						String brandField = brand.path(element).asText(); // The field of this element returned from this brand
+						brandField = brandField
+							.replaceAll(delimiter, "") // Replace all delimiters with spaces
+							.replaceAll("\n", "") // Remove newlines
+							.replaceAll("\r", "") // Remove carriage returns
+							.replaceAll("null", ""); // Removes "null" in Strings
+						sb.append(brandField); // Append the element that we got from the current page
 					}
 					catch (Exception e) {}
 				}
-				sb.append(delimiter);
-				
+				sb.append(delimiter); // Append a delimiter at the end of each element, whether or not we got that element, to keep things in consistent "columns"
 		}
-		sb.setLength(sb.length() - 1); // Remove the last delimiter
+		sb.setLength(sb.length() - 1); // Remove the last delimiter because it is just floating at the end of the line now
 		return sb.toString();
 	}
 
