@@ -16,9 +16,10 @@ public class TokenGenerator {
 		// If the token is not valid, print an error to stderr.
 		if (UserTokenRefresher.isTokenValid(token)) {
 			System.out.println(token);
+			System.err.println("Token generated successfully");
 		}
 		else {
-			System.out.println("ERROR: The generated token was invalid,");
+			System.err.println("ERROR: The generated token was invalid");
 		}
 	}
 }
